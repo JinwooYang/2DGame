@@ -3,10 +3,11 @@ using System.Collections;
 
 public class Missile : MonoBehaviour 
 {
-    public Rigidbody2D rig = null;
+    Rigidbody2D rig;
 
 	void Start () 
     {
+        rig = GetComponent<Rigidbody2D>();
         rig.velocity = Vector2.up * 5f;
 	}
 	

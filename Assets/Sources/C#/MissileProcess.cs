@@ -1,29 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MissileProcess : MonoBehaviour 
+public class MissileProcess : MonoBehaviour
 {
     public GameObject missile = null;
-
-    Transform cachedTransform;
+    public Transform missileSpawnTransform = null;
 
     float interval = 0f;
     float intervalMax = 0.1f;
 
-	void Awake () 
+    void Update()
     {
-        cachedTransform = base.transform;
-	}
-	
-	void Update () 
-    {
-	    interval += Time.deltaTime;
+        interval += Time.deltaTime;
 
-        if(interval > intervalMax)
+        if (interval > intervalMax)
         {
             interval = 0f;
 
-            Instantiate(missile, cachedTransform.position, Quaternion.identity);
+            Instantiate(missile, missileSpawnTransform.position, Quaternion.identity);
         }
-	}
+    }
 }
