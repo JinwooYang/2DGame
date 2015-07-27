@@ -8,6 +8,8 @@ public class Monster : MonoBehaviour
     public Animator anim = null;
     public GameObject gold = null;
 
+    PlayerState playerState = null;
+
     bool isDamage = false;
     bool isDie = false;
 
@@ -32,6 +34,7 @@ public class Monster : MonoBehaviour
 
         if(hp <= 0)
         {
+            playerState.AddKillCount();
             isDie = true;
             anim.Play("MonsterDie");
         }
@@ -54,6 +57,7 @@ public class Monster : MonoBehaviour
 
     void Start()
     {
+        playerState = GameObject.Find("Player").GetComponent<PlayerState>();
         Vector2 velocity = rig.velocity;
         velocity.x = 0f;
         velocity.y = -2f;
